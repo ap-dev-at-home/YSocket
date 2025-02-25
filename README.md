@@ -48,7 +48,7 @@ class ServerPipeHandler : IDisposable
         this.pipeServer.Handle<StatusInformationQuery>(statusInformationQuery =>
         {
             //statuscommand received - respond
-            this.pipeServer.Write(new StatusInformation { ... });
+            this.pipeServer.Send(new StatusInformation { ... });
         });
     }
 
@@ -106,7 +106,7 @@ class ClientPipeHandler : IDisposable
     {
         try
         {
-            pipeClient.Write(new StatusInformationQuery());
+            this.pipeClient.Send(new StatusInformationQuery());
         }
         catch (Exception ex)
         {
@@ -120,7 +120,7 @@ class ClientPipeHandler : IDisposable
     {
         try
         {
-            pipeClient.Write(new ExitCommand());
+            this.pipeClient.Send(new ExitCommand());
         }
         catch (Exception ex)
         {
