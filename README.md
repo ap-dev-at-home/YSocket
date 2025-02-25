@@ -40,12 +40,12 @@ class ServerPipeHandler : IDisposable
 
     private void RegisterPipeHandlers()
     {
-        this.pipeServer.Register<ExitCommand>(exitCommand =>
+        this.pipeServer.Handle<ExitCommand>(exitCommand =>
         {
             //exitcommand received - stop application
         });
 
-        this.pipeServer.Register<StatusInformationQuery>(statusInformationQuery =>
+        this.pipeServer.Handle<StatusInformationQuery>(statusInformationQuery =>
         {
             //statuscommand received - respond
             this.pipeServer.Write(new StatusInformation { ... });
@@ -79,7 +79,7 @@ class ClientPipeHandler : IDisposable
 
     internal void RegisterPipeHandlers()
     {
-        pipeClient.Register<StatusInformation>(statusInformation =>
+        pipeClient.Handle<StatusInformation>(statusInformation =>
         {
             //process status information
         });
