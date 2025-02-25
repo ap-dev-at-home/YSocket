@@ -2,16 +2,16 @@
 
 YSocket is a C# Library to provide communication in the following categories
 
-- Interprocess
+- Inter process
   - Named Pipes
 - Microservices (in Work...)
   - WebSockets
 - Gaming (in Work...)
   - Small packaged Udp
 
-# Interprocess Communication (IPC)
+# Inter Process Communication (IPC)
 
-PipeServer/PipeClient introduces an interprocess communication model between processes based on c# class types, using named pipes.
+PipeServer/PipeClient introduces an inter process communication model between processes based on c# class types, using named pipes.
 Server and Client can setup their handlers on a shared class model and receive or send queries/commands on them.
 
 ### Named Pipe Server
