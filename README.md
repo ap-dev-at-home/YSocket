@@ -4,10 +4,10 @@ YSocket is a C# Library to provide communication in the following categories
 
 - Inter process
   - Named Pipes
-- Microservices (in Work...)
-  - WebSockets
-- Gaming (in Work...)
-  - Small packaged Udp
+- Microservices (still working on it...)
+  - Tcp-Sockets
+- Gaming (still working on it...)
+  - Udp-Sockets
 
 # Inter Process Communication (IPC)
 
