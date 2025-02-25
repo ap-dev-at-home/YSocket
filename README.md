@@ -11,7 +11,7 @@ YSocket is a C# Library to provide communication in the following categories
 
 # Interprocess Communication (IPC)
 
-### Pipe Server
+### Named Pipe Server
 ```csharp
 using YSocket.Ipc;
 
@@ -59,7 +59,7 @@ class ServerPipeHandler : IDisposable
 }
 ```
 
-### Pipe Client
+### Named Pipe Client
 ```csharp
 using YSocket.Ipc;
 
