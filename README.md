@@ -22,7 +22,7 @@ class ServerPipeHandler : IDisposable
 {
     private readonly PipeServer pipeServer;
     
-    public PipeHandler(
+    public ServerPipeHandler(
         CancellationToken? cancellationToken = null)
     {
         var pipeSecurity = new PipeSecurity();
@@ -70,7 +70,7 @@ class ClientPipeHandler : IDisposable
 {
     private readonly PipeClient pipeClient;
     
-    internal PipeHandler(
+    internal ClientPipeHandler(
         CancellationToken? cancellationToken)
     {
         this.pipeClient = new(Names.PIPE_SERVER_GUID, 
