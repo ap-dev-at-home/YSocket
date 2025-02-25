@@ -47,7 +47,7 @@ class ServerPipeHandler : IDisposable
 
         this.pipeServer.Handle<StatusInformationQuery>(statusInformationQuery =>
         {
-            //statuscommand received - respond
+            //statusinformationquery received - respond
             this.pipeServer.Send(new StatusInformation { ... });
         });
     }
