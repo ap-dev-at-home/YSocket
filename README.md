@@ -73,13 +73,13 @@ class ClientPipeHandler : IDisposable
     internal PipeHandler(
         CancellationToken? cancellationToken)
     {
-        pipeClient = new(Names.PIPE_SERVER_GUID, 
+        this.pipeClient = new(Names.PIPE_SERVER_GUID, 
             cancellationToken: cancellationToken);
     }
 
     internal void RegisterPipeHandlers()
     {
-        pipeClient.Handle<StatusInformation>(statusInformation =>
+        this.pipeClient.Handle<StatusInformation>(statusInformation =>
         {
             //process status information
         });
@@ -92,7 +92,7 @@ class ClientPipeHandler : IDisposable
 
         do
         {
-            success = await pipeClient.Connect(2500);
+            success = await this.pipeClient.Connect(2500);
             if (success == true)
             {
                 break;
