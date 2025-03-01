@@ -46,9 +46,9 @@ public class PipeServer : PipeBase
                 await this.ServerStream.WaitForConnectionAsync(base.cancellationToken);
                 await base.Read();
             }
-            catch
+            catch (Exception ex)
             {
-
+                base.Error?.Invoke(ex);
             }
             finally
             {
