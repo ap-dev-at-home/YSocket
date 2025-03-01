@@ -43,9 +43,9 @@ public class PipeClient : PipeBase
         {
             _ = base.Read();
         }
-        catch
+        catch (Exception ex)
         {
-
+            base.Error?.Invoke(ex);
         }
 
         return await Task.FromResult(true);

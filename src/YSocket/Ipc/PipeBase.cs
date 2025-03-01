@@ -12,6 +12,18 @@ public class PipeBase : IDisposable
         init;
     }
 
+    public Action<Exception>? Error
+    {
+        get;
+        set;
+    }
+
+    public Action? Disconnected
+    {
+        get;
+        set;
+    }
+
     private readonly Dictionary<string, Action<object>> handlers = [];
 
     protected PipeStream stream;
@@ -42,7 +54,17 @@ public class PipeBase : IDisposable
 
         while (this.stream.IsConnected)
         {
-            int bytesRead = await this.stream.ReadAsync(buffer, this.cancellationToken);
+            int bytesRead = 0;
+
+            try
+            {
+                bytesRead = await this.stream.ReadAsync(buffer, this.cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                this.Error?.Invoke(ex);
+                break;
+            }
 
             byteArray.WriteBytes(buffer, 0, bytesRead);
 
@@ -59,6 +81,8 @@ public class PipeBase : IDisposable
                 byteArray.TrimStart(length + sizeof(Int32));
             }
         }
+
+        this.Disconnected?.Invoke();
     }
 
     private void Handle(string message)
